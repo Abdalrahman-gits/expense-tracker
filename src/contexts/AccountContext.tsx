@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, type ReactNode } from "react";
 
 type balanceType = {
+  id: number;
   text: string;
   amount: number;
 };
@@ -39,9 +40,13 @@ function reducer(state: initType, action: actionType): initType {
         balance: state.balance + action.payload.amount,
         income: state.income + action.payload.amount,
         balanceHistory: [
+          {
+            id: action.payload.id,
+            text: action.payload.text,
+            amount: action.payload.amount,
+          },
           ...state.balanceHistory,
-          { text: action.payload.text, amount: action.payload.amount },
-        ].reverse(),
+        ],
       };
 
     case "account/expense":
@@ -50,9 +55,21 @@ function reducer(state: initType, action: actionType): initType {
         balance: state.balance + action.payload.amount,
         expense: state.expense + -action.payload.amount,
         balanceHistory: [
+          {
+            id: action.payload.id,
+            text: action.payload.text,
+            amount: action.payload.amount,
+          },
           ...state.balanceHistory,
-          { text: action.payload.text, amount: action.payload.amount },
-        ].reverse(),
+        ],
+      };
+
+    case "account/delete":
+      return {
+        ...state,
+        balanceHistory: state.balanceHistory.filter(
+          (trans) => trans.id !== action.payload.id,
+        ),
       };
 
     default:

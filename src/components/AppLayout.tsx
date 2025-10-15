@@ -1,14 +1,14 @@
 import TotalBalance from "./TotalBalance";
 import Header from "./Header";
 import TransactionForm from "./TransactionForm";
-import Transactions from "./Transactions";
+import TransactionList from "./TransactionList";
 
 function AppLayout() {
   return (
     <div className="mx-auto max-w-sm px-3.5">
       <Header />
       <TotalBalance />
-      <Transactions />
+      <TransactionList />
       <TransactionForm />
     </div>
   );

@@ -26,14 +26,14 @@ function TransactionForm() {
     if (Number(amount) > 0)
       dispatch({
         type: "account/income",
-        payload: { text, amount: Number(amount) },
+        payload: { id: Date.now(), text, amount: Number(amount) },
       });
     else {
       const canExpense = balance >= -Number(amount);
       if (canExpense)
         dispatch({
           type: "account/expense",
-          payload: { text, amount: Number(amount) },
+          payload: { id: Date.now(), text, amount: Number(amount) },
         });
       else {
         setErrors("Withdrawl has been failed");

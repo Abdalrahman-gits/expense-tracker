@@ -1,5 +1,5 @@
 function Header() {
-  return <h1 className="mt-8 text-center text-2xl mb-5">Expense Tracker</h1>;
+  return <h1 className="mb-5 pt-8 text-center text-2xl">Expense Tracker</h1>;
 }
 
 export default Header;

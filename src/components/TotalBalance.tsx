@@ -1,6 +1,6 @@
 import { useAccount } from "../contexts/AccountContext";
 import { formatCurrency } from "../utils/formatCurrency";
-import BalanceDetails from "./BalanceDetails";
+import IncomeExpenses from "./IncomeExpenses";
 
 function TotalBalance() {
   const { state } = useAccount();
@@ -12,7 +12,7 @@ function TotalBalance() {
           {formatCurrency(state.balance)}
         </span>
       </div>
-      <BalanceDetails />
+      <IncomeExpenses />
     </div>
   );
 }
